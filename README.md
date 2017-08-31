@@ -2,7 +2,7 @@
 基于SSM框架的权限管理系统，支持操作权限和数据权限，后端采用Spring、SpringMVC、Mybatis、Shiro，前端采用adminLTE、vue.js、bootstrap-table、tree-grid、layer，对前后端进行封装，可快速完成CRUD的开发，基于项目结构通过代码生成器可生成前端后台部分代码，更加方便地进行二次开发。项目采用Maven分模块构建，方便扩展自定义模块。
 
 ###  :fa-thumbs-o-up: 更新说明
-1. 基于机构管理的数据权限（机构管理、数据权限）
+1. 基于机构管理的数据权限（机构管理、操作权限、数据权限）
 2. 行政区域管理，数据来自国家统计局2017-03-10发布最新行政区域代码数据
 3. 基于此项目结构的代码生成器，生成java、html、js文件
 
@@ -31,6 +31,7 @@
 - dp-shiro：权限模块
 - dp-orm：数据持久模块
 - dp-quartz：定时任务模块
+- dp-generator：代码生成模块
 - dp-web：前端界面
 - dp-base：基础模块，目前包含行政区域、通用字典和系统日志功能模块
 ### 交流反馈
@@ -51,8 +52,8 @@
 - 演示地址：[http://pro.chenlintech.com](http://pro.chenlintech.com)
 - 账号密码：admin / 1
 ### 运行效果
-![image](http://chenlintech.com:8080/statics/lte/1.png)
-![image](http://chenlintech.com:8080/statics/lte/2.png)
-![image](http://chenlintech.com:8080/statics/lte/3.png)
-![image](http://chenlintech.com:8080/statics/lte/4.png)
-![image](http://chenlintech.com:8080/statics/lte/5.png)
+![image](http://chenlintech.com:8080/statics/pro/1.png)
+![image](http://chenlintech.com:8080/statics/pro/2.png)
+![image](http://chenlintech.com:8080/statics/pro/3.png)
+![image](http://chenlintech.com:8080/statics/pro/4.png)
+![image](http://chenlintech.com:8080/statics/pro/5.png)
