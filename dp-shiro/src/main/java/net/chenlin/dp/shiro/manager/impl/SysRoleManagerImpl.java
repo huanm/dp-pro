@@ -79,22 +79,28 @@ public class SysRoleManagerImpl implements SysRoleManager {
 	@Override
 	public int updateRoleOptAuthorization(SysRoleEntity role) {
 		Long roleId = role.getRoleId();
-		sysRoleMenuMapper.remove(roleId);
+		int count = sysRoleMenuMapper.remove(roleId);
 		Query query = new Query();
 		query.put("roleId", roleId);
-		query.put("menuIdList", role.getMenuIdList());
-		int count = sysRoleMenuMapper.save(query);
+		List<Long> menuId = role.getMenuIdList();
+		if(menuId.size() > 0) {
+			query.put("menuIdList", role.getMenuIdList());
+			count = sysRoleMenuMapper.save(query);
+		}
 		return count;
 	}
 
 	@Override
 	public int updateRoleDataAuthorization(SysRoleEntity role) {
 		Long roleId = role.getRoleId();
-		sysRoleOrgMapper.remove(roleId);
+		int count = sysRoleOrgMapper.remove(roleId);
 		Query query = new Query();
 		query.put("roleId", roleId);
-		query.put("orgIdList", role.getOrgIdList());
-		int count = sysRoleOrgMapper.save(query);
+		List<Long> orgId = role.getOrgIdList();
+		if(orgId.size() > 0) {
+			query.put("orgIdList", role.getOrgIdList());
+			count = sysRoleOrgMapper.save(query);
+		}
 		return count;
 	}
 	
