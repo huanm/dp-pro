@@ -9,8 +9,8 @@
 ### 项目介绍
 - 一个轻量级的Java快速开发框架，能快速开发项目并交付（规划后期不定时发布更新）
 - 友好的代码结构及注释，便于阅读及二次开发，命名规范和工程分层规约参考阿里巴巴JAVA开发规范
-- 前后端开发封装，快速实现CRUD开发（通过velocity模板生成部分代码）
-- 基于角色的权限管理，细分到按钮权限，也支持数据权限
+- 前后端开发封装，快速实现CRUD开发（规划通过velocity模板生成部分代码）
+- 基于角色的权限管理，细分到按钮权限（规划将支持数据权限）
 - 基于Maven模块化开发，可快速扩展个性化业务模块
 ### 技术方案
 - 核心框架：Spring
@@ -34,7 +34,7 @@
 - dp-web：前端界面
 - dp-base：基础模块，目前包含行政区域、通用字典和系统日志功能模块
 ### 交流反馈
-- os-china仓库：[http://git.oschina.net/zhocuhenglin/dp-pro/](http://git.oschina.net/zhocuhenglin/dp-pro/)
+- os-china仓库：[http://git.oschina.net/zhocuhenglin/dp-pro](http://git.oschina.net/zhocuhenglin/dp-pro)
 - 作者主页：[http://www.chenlintech.com/](http://www.chenlintech.com/)
 - 交流QQ群：553461392
 - 如果对项目感兴趣，请Watch、Star项目，后期会不定时发布更新
@@ -46,13 +46,13 @@
 -  删除的方法用 remove(推荐) 或 delete 做前缀
 -  修改的方法用 update 做前缀
 ### 应用分层（参考阿里巴巴Java开发手册）
-![image](http://chenlintech.com:8080/statics/img/0.png)
+![image](http://chenlintech.com:8080/statics/common/0.png)
 ### 项目演示
 - 演示地址：[http://pro.chenlintech.com](http://pro.chenlintech.com)
 - 账号密码：admin / 1
 ### 运行效果
-![image](http://chenlintech.com:8080/statics/img/1.png)
-![image](http://chenlintech.com:8080/statics/img/2.png)
-![image](http://chenlintech.com:8080/statics/img/3.png)
-![image](http://chenlintech.com:8080/statics/img/4.png)
-![image](http://chenlintech.com:8080/statics/img/5.png)
+![image](http://chenlintech.com:8080/statics/lte/1.png)
+![image](http://chenlintech.com:8080/statics/lte/2.png)
+![image](http://chenlintech.com:8080/statics/lte/3.png)
+![image](http://chenlintech.com:8080/statics/lte/4.png)
+![image](http://chenlintech.com:8080/statics/lte/5.png)
