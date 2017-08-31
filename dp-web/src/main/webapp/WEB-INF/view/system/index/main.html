@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>主页</title>
+#parse("include/header.html")
+<link rel="stylesheet" href="${rc.contextPath}/statics/css/home.css?_${date.systemTime}">
+</head>
+<body>
+<div id="areascontent" style="overflow: auto; height: 365px;">
+		<div class="rows" style="margin-bottom: 0.6%; overflow: hidden;">
+			<div style="float: left; width: 69.2%;">
+				<div
+					style="height: 100%; border: 1px solid #e6e6e6; overflow: hidden;">
+					<div class="dashboard-stats">
+						<div class="dashboard-stats-item"
+							style="background-color: #578ebe;">
+							<div class="stat-icon">
+								<i class="fa fa-clock-o"></i>
+							</div>
+							<h2 class="m-top-none">
+								17<span>个</span>
+							</h2>
+							<h5>待办未处理</h5>
+						</div>
+					</div>
+					<div class="dashboard-stats">
+						<div class="dashboard-stats-item"
+							style="background-color: #e35b5a;">
+							<h2 class="m-top-none">
+								12<span>条</span>
+							</h2>
+							<h5>预警信息未读</h5>
+							<div class="stat-icon">
+								<i class="fa fa-bell"></i>
+							</div>
+						</div>
+					</div>
+					<div class="dashboard-stats">
+						<div class="dashboard-stats-item"
+							style="background-color: #44b6ae;">
+							<h2 class="m-top-none">
+								20<span>封</span>
+							</h2>
+							<h5>邮件未读</h5>
+							<div class="stat-icon">
+								<i class="fa fa-envelope-o"></i>
+							</div>
+						</div>
+					</div>
+					<div class="dashboard-stats">
+						<div class="dashboard-stats-item"
+							style="background-color: #8775a7; margin-right: 0px;">
+							<h2 class="m-top-none">6</h2>
+							<h5>对公待签收任务</h5>
+							<div class="stat-icon">
+								<i class="fa fa-gavel"></i>
+							</div>
+						</div>
+					</div>
+					<div class="dashboard-stats">
+						<div class="dashboard-stats-item"
+							style="background-color: #4f5c65; margin-bottom: 0px;">
+							<h2 class="m-top-none">
+								324<span>件</span>
+							</h2>
+							<h5>今日订单数</h5>
+							<div class="stat-icon">
+								<i class="fa fa-shopping-cart"></i>
+							</div>
+						</div>
+					</div>
+					<div class="dashboard-stats">
+						<div class="dashboard-stats-item"
+							style="background-color: #14aae4; margin-bottom: 0px;">
+							<h2 class="m-top-none">
+								525<span>件</span>
+							</h2>
+							<h5>昨日订单数</h5>
+							<div class="stat-icon">
+								<i class="fa fa-file-text-o"></i>
+							</div>
+						</div>
+					</div>
+					<div class="dashboard-stats">
+						<div class="dashboard-stats-item"
+							style="background-color: #949FB1; margin-bottom: 0px;">
+							<h2 class="m-top-none">
+								355<span>件</span>
+							</h2>
+							<h5>回退订单数</h5>
+							<div class="stat-icon">
+								<i class="fa fa-coffee"></i>
+							</div>
+						</div>
+					</div>
+					<div class="dashboard-stats">
+						<div class="dashboard-stats-item"
+							style="background-color: #f29503; margin-right: 0px; margin-bottom: 0px;">
+							<h2 class="m-top-none">
+								3335<span>元</span>
+							</h2>
+							<h5>昨日成交金额</h5>
+							<div class="stat-icon">
+								<i class="fa fa-rmb" style="padding-left: 10px;"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="float: right; width: 30%;">
+				<div
+					style="height: 221px; border: 1px solid #e6e6e6; background-color: #fff;">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-area-chart fa-lg" style="padding-right: 5px;"></i>成交订单
+						</div>
+						<div class="panel-body">
+							<div id="lineChart" style="height: 160px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rows" style="margin-bottom: 0.6%; overflow: hidden;">
+			<div style="float: left; width: 69.2%;">
+				<div
+					style="height: 290px; border: 1px solid #e6e6e6; background-color: #fff;">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-bar-chart fa-lg" style="padding-right: 5px;"></i>柱状图
+						</div>
+						<div class="panel-body">
+							<div id="barChart" style="height: 230px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="float: right; width: 30%;">
+				<div
+					style="height: 290px; border: 1px solid #e6e6e6; background-color: #fff;">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-pie-chart fa-lg" style="padding-right: 5px;"></i>请假统计
+						</div>
+						<div class="panel-body" style="padding: 0px;">
+							<div id="pieChart" style="height: 230px; margin-top: 10px;"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="rows" style="overflow: hidden;">
+			<div style="float: left; width: 33.8%; margin-right: 0.8%;">
+				<div
+					style="height: 215px; border: 1px solid #e6e6e6; background-color: #fff;">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-send fa-lg" style="padding-right: 5px;"></i>企业文化
+						</div>
+						<div class="panel-body">
+							<ul>
+								<li><a href="#">尊重自己的员工，依靠员工来宣传企业品牌</a><span class="time">2017-08-19</span></li>
+								<li><a href="#">尊重自己的顾客，把顾客当成自己的朋友</a><span class="time">2017-06-18</span></li>
+								<li><a href="#">靠团队精神达到共同目标</a><span class="time">2017-06-26</span></li>
+								<li><a href="#">只有勇于承担责任，才能承担更大的责任</a><span class="time">2017-04-20</span></li>
+								<li><a href="#">只有不完美的产品，没有不挑剔的客户</a><span class="time">2017-03-08</span></li>
+								<li><a href="#">需求万变，努力不变</a><span class="time">2017-02-22</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="float: left; width: 34.6%; margin-right: 0.8%;">
+				<div
+					style="height: 215px; border: 1px solid #e6e6e6; background-color: #fff;">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-rss fa-lg" style="padding-right: 5px;"></i>通知公告
+						</div>
+						<div class="panel-body">
+							<ul>
+								<li><a href="#">【通知】国庆节放假通知</a><span class="time">2017-08-21</span></li>
+								<li><a href="#">【公告】北京分公司第二期委培名单</a><span class="time">2017-07-21</span></li>
+								<li><a href="#">【通知】南京公司作息时间调整通知，下月执行</a><span class="time">2017-07-15</span></li>
+								<li><a href="#">【公告】Q2季度之星名单公示</a><span class="time">2017-07-21</span></li>
+								<li><a href="#">【通知】中秋福利发放通知，请各部门主管到行政部领取</a><span class="time">2017-04-24</span></li>
+								<li><a href="#">【公告】苏州分公司总经理任命书</a><span class="time">2017-01-21</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="float: right; width: 30%;">
+				<div
+					style="height: 215px; border: 1px solid #e6e6e6; background-color: #fff;">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-thumbs-o-up fa-lg" style="padding-right: 5px;"></i>最新签约
+						</div>
+						<div class="panel-body">
+							<ul>
+								<li><a href="#">上海亚太计算机信息系统有限公司</a><span class="time">2017-07-21</span></li>
+								<li><a href="#">南京中车浦镇工业物流有限公司</a><span class="time">2017-07-20</span></li>
+								<li><a href="#">山西晋煤集团技术研究院有限责任公司</a><span class="time">2017-07-19</span></li>
+								<li><a href="#">长春机场集团有限公司</a><span class="time">2017-07-17</span></li>
+								<li><a href="#">合肥工业大学</a><span class="time">2017-07-17</span></li>
+								<li><a href="#">广西师范大学</a><span class="time">2017-07-13</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+#parse("include/footer.html")
+<script src="${rc.contextPath}/statics/plugins/chart/echarts.min.js?_${date.systemTime}"></script>
+<script src="${rc.contextPath}/statics/js/home.js?_${date.systemTime}"></script>
+</body>
+</html>
