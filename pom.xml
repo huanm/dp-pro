@@ -14,7 +14,6 @@
 		<module>dp-base</module>
 		<module>dp-orm</module>
 		<module>dp-quartz</module>
-		<module>dp-generator</module>
 	</modules>
 
 	<properties>

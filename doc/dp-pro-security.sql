@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50548
 File Encoding         : 65001
 
-Date: 2017-08-31 09:56:05
+Date: 2017-09-01 14:59:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -89,9 +89,6 @@ INSERT INTO `sys_menu` VALUES ('55', '47', '日志列表', null, 'quartz:job:log
 INSERT INTO `sys_menu` VALUES ('56', '47', '刷新', null, 'quartz:log:list', '2', null, '0', '2017-08-21 13:25:33', null);
 INSERT INTO `sys_menu` VALUES ('57', '47', '删除', null, 'quartz:log:remove', '2', null, '0', '2017-08-21 13:25:52', null);
 INSERT INTO `sys_menu` VALUES ('58', '47', '清空', null, 'quartz:log:clear', '2', null, '0', '2017-08-21 13:26:11', null);
-INSERT INTO `sys_menu` VALUES ('65', '1', '敏捷开发', 'base/generator/list.html', null, '1', 'fa fa-archive', '5', '2017-08-29 18:45:41', '2017-08-29 18:45:55');
-INSERT INTO `sys_menu` VALUES ('71', '65', '刷新', null, 'sys:gen:list', '2', null, '0', '2017-08-29 18:49:01', null);
-INSERT INTO `sys_menu` VALUES ('72', '65', '生成代码', null, 'sys:gen:code', '2', null, '0', '2017-08-29 18:49:19', null);
 
 -- ----------------------------
 -- Table structure for sys_org
@@ -196,9 +193,6 @@ INSERT INTO `sys_role_menu` VALUES ('806', '1', '55');
 INSERT INTO `sys_role_menu` VALUES ('807', '1', '56');
 INSERT INTO `sys_role_menu` VALUES ('808', '1', '57');
 INSERT INTO `sys_role_menu` VALUES ('809', '1', '58');
-INSERT INTO `sys_role_menu` VALUES ('810', '1', '65');
-INSERT INTO `sys_role_menu` VALUES ('811', '1', '71');
-INSERT INTO `sys_role_menu` VALUES ('812', '1', '72');
 INSERT INTO `sys_role_menu` VALUES ('813', '1', '3');
 INSERT INTO `sys_role_menu` VALUES ('814', '1', '36');
 INSERT INTO `sys_role_menu` VALUES ('815', '1', '42');
@@ -230,14 +224,16 @@ CREATE TABLE `sys_role_org` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   `org_id` bigint(20) DEFAULT NULL COMMENT '机构ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='角色与机构对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='角色与机构对应关系';
 
 -- ----------------------------
 -- Records of sys_role_org
 -- ----------------------------
-INSERT INTO `sys_role_org` VALUES ('6', '39', '5');
-INSERT INTO `sys_role_org` VALUES ('8', '39', '9');
-INSERT INTO `sys_role_org` VALUES ('9', '39', '10');
+INSERT INTO `sys_role_org` VALUES ('14', '1', '1');
+INSERT INTO `sys_role_org` VALUES ('15', '1', '2');
+INSERT INTO `sys_role_org` VALUES ('16', '39', '9');
+INSERT INTO `sys_role_org` VALUES ('17', '39', '12');
+INSERT INTO `sys_role_org` VALUES ('18', '39', '16');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -262,7 +258,7 @@ CREATE TABLE `sys_user` (
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('1', '1', 'admin', '33808479d49ca8a3cdc93d4f976d1e3d', 'admin@example.com', '123456', '1', null, '1', '2017-08-15 21:40:39', '2017-08-15 21:41:00');
-INSERT INTO `sys_user` VALUES ('2', '7', 'test', '432d2eb39bc04f6e7142f3620dba3633', null, null, '1', null, '1', '2017-08-14 13:43:05', '2017-08-17 16:07:42');
+INSERT INTO `sys_user` VALUES ('2', '7', 'test', '432d2eb39bc04f6e7142f3620dba3633', null, null, '1', null, '1', '2017-08-14 13:43:05', '2017-08-31 14:36:29');
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -273,9 +269,11 @@ CREATE TABLE `sys_user_role` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES ('46', '1', '1');
+INSERT INTO `sys_user_role` VALUES ('47', '2', '1');
+INSERT INTO `sys_user_role` VALUES ('48', '2', '39');
