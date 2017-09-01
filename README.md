@@ -5,6 +5,7 @@
 1. 基于机构管理的数据权限（机构管理、操作权限、数据权限）
 2. 行政区域管理，数据来自国家统计局2017-03-10发布最新行政区域代码数据
 3. 基于此项目结构的代码生成器，生成java、html、js文件
+4. 项目文档：[http://dp-dev.mydoc.io/](http://dp-dev.mydoc.io/)
 
 ### 项目介绍
 - 一个轻量级的Java快速开发框架，能快速开发项目并交付（规划后期不定时发布更新）
@@ -36,6 +37,7 @@
 - dp-base：基础模块，目前包含行政区域、通用字典和系统日志功能模块
 ### 交流反馈
 - os-china仓库：[http://git.oschina.net/zhocuhenglin/dp-pro](http://git.oschina.net/zhocuhenglin/dp-pro)
+- 项目文档：[http://dp-dev.mydoc.io/](http://dp-dev.mydoc.io/)
 - 作者主页：[http://www.chenlintech.com/](http://www.chenlintech.com/)
 - 交流QQ群：553461392
 - 如果对项目感兴趣，请Watch、Star项目，后期会不定时发布更新
