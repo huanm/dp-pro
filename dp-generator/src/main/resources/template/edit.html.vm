@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>编辑-${comments}</title>
+#set($header='#parse("include/header.html")')
+#set($footer='#parse("include/footer.html")')
+$header
+</head>
+<body>
+	<div id="dpLTE" class="container-fluid" v-cloak>
+		<table class="form" id="form">
+#foreach($column in $columns)
+#if($column.columnName != $pk.columnName)
+			<tr>
+	            <td class="formTitle">${column.columnComment}<font face="宋体">*</font></td>
+	            <td class="formValue">
+					<input type="text" class="form-control" placeholder="${column.columnComment}" v-model="${objName}.${column.fieldName}" isvalid="yes" checkexpession="NotNull">
+	            </td>
+        	</tr>
+#end
+#end
+		</table>
+	</div>
+	$footer
+	<script
+		src="${rc.contextPath}/statics/js/${viewPath}/edit.js?_${date.systemTime}"></script>
+</body>
+</html>
