@@ -38,6 +38,7 @@
 - dp-orm：数据持久模块
 - dp-quartz：定时任务模块
 - dp-web：前端界面
+- dp-generator：代码生成模块
 - dp-base：基础模块，目前包含行政区域、通用字典和系统日志功能模块
 ### 交流反馈
 - os-china仓库：[http://git.oschina.net/zhocuhenglin/dp-pro](http://git.oschina.net/zhocuhenglin/dp-pro)
