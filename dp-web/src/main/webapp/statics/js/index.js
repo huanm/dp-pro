@@ -45,8 +45,10 @@ var vm = new Vue({
 		hideMenu : function() {
 			if (!$("body").hasClass("sidebar-collapse")) {
 				$("body").addClass("sidebar-collapse");
+				removeScroll();
 			} else {
 				$("body").removeClass("sidebar-collapse");
+				setScroll();
 			}
 		},
 		getMenuList : function(event) {
@@ -125,35 +127,33 @@ var vm = new Vue({
 		this.getPermList();
 		this.getUser();
 		// 菜单点击事件
-		$(document).off('click', ".sidebar-menu li a").on(
-				'click',
-				".sidebar-menu li a",
-				function(e) {
-					var $this = $(this);
-					var checkElement = $this.next();
-					if ((checkElement.is('.treeview-menu'))
-							&& (checkElement.is(':visible'))) {
-						checkElement.slideUp('fast', function() {
-							checkElement.removeClass('menu-open');
-						});
-						checkElement.parent("li").removeClass("active");
-					} else if ((checkElement.is('.treeview-menu'))
-							&& (!checkElement.is(':visible'))) {
-						var parent = $this.parents('ul').first();
-						var ul = parent.find('ul:visible').slideUp('fast');
-						ul.removeClass('menu-open');
-						var parent_li = $this.parent("li");
-
-						checkElement.slideDown('fast', function() {
-							checkElement.addClass('menu-open');
-							parent.find('li.active').removeClass('active');
-							parent_li.addClass('active');
-						});
-					}
-					if (checkElement.is('.treeview-menu')) {
-						e.preventDefault();
-					}
+		$(document).off('click', ".sidebar-menu li a").on('click', ".sidebar-menu li a", function(e) {
+			var $this = $(this);
+			var checkElement = $this.next();
+			if ((checkElement.is('.treeview-menu'))
+					&& (checkElement.is(':visible'))) {
+				checkElement.slideUp('fast', function() {
+					checkElement.removeClass('menu-open');
 				});
+				checkElement.parent("li").removeClass("active");
+			} else if ((checkElement.is('.treeview-menu'))
+					&& (!checkElement.is(':visible'))) {
+				var parent = $this.parents('ul').first();
+				var ul = parent.find('ul:visible').slideUp('fast');
+				ul.removeClass('menu-open');
+				var parent_li = $this.parent("li");
+
+				checkElement.slideDown('fast', function() {
+					checkElement.addClass('menu-open');
+					parent.find('li.active').removeClass('active');
+					parent_li.addClass('active');
+					
+				});
+			}
+			if (checkElement.is('.treeview-menu')) {
+				e.preventDefault();
+			}
+		});
 	},
 	updated : function() {
 		// 路由
@@ -193,10 +193,20 @@ function routerList(router, menuList) {
 
 //菜单滚动条自适应
 function setScroll(){
-    $(".sidebar-menu").slimScroll({
+    $("#sidebar-menu").slimScroll({
         height: $(this).height() - 50,
         alwaysVisible: false,
     });
+    $(window).on("resize", function() {
+    	$("#sidebar-menu").slimScroll({
+            height: $(this).height() - 50,
+            alwaysVisible: false,
+        });
+    });
 }
 
-$(window).on("resize",setScroll);
+function removeScroll() {
+	$('.sidebar').append($('#sidebar-menu'));
+	$('#sidebar-menu').removeAttr('style');
+	$('.slimScrollDiv').remove();
+}
