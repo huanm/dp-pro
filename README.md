@@ -58,6 +58,7 @@
 - 演示地址：[http://dp.chenlintech.com](http://dp.chenlintech.com)
 - 账号密码：admin / 1
 ### 运行效果
+![image](http://chenlintech.com:8080/statics/pro/6.png)
 ![image](http://chenlintech.com:8080/statics/pro/1.png)
 ![image](http://chenlintech.com:8080/statics/pro/2.png)
 ![image](http://chenlintech.com:8080/statics/pro/3.png)
