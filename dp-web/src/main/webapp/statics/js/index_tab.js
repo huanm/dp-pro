@@ -278,22 +278,6 @@
                         f.find("li.active").removeClass("active"),
                         h.addClass("active");
                         
-//                        var _height1 = $(window).height() - $("#sidebar-menu >li.active").position().top - 41;
-//                        var _height2 = $("#sidebar-menu li > ul.menu-open").height() + 10;
-//                        if (_height2 > _height1) {
-//                            if(_height3 < $("#sidebar-menu").height()) {
-//                            	$("#sidebar-menu >li > ul.menu-open").css({
-//                            		"overflow-x": "hide", 
-//                            		"overflow-y": "auto"
-//                            	})
-//                            } else {
-//                            	$("#sidebar-menu >li > ul.menu-open").css({
-//                            		overflow: "auto",
-//                            		height: _height1
-//                            	})
-//                            }
-//                        }
-                        
                     })
                 }
                 e.is(".treeview-menu");
@@ -321,7 +305,7 @@
             return reval;
         },
         loadMenu: function (data) {
-        	var _html = "";
+        	var _html = "<li class='header'>导航菜单</li>";
             $.each(data, function (i) {
                 var row = data[i];
                 if (row.parentId == 0) {
@@ -360,7 +344,7 @@
                     _html += '</li>'
                 }
             });
-            $("#sidebar-menu").append(_html);
+            $("#sidebar-menu").empty().append(_html);
         }
     };
 })(jQuery);
