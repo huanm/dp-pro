@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50548
 File Encoding         : 65001
 
-Date: 2017-09-05 13:52:26
+Date: 2017-09-13 22:32:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,12 +31,12 @@ CREATE TABLE `sys_menu` (
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COMMENT='菜单管理';
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES ('1', '0', '系统管理', null, '', '0', 'fa fa-coffee', '0', '2017-08-09 22:49:47', '2017-08-17 09:53:26');
+INSERT INTO `sys_menu` VALUES ('1', '0', '系统管理', null, '', '0', 'fa fa-coffee', '0', '2017-08-09 22:49:47', '2017-09-11 17:25:22');
 INSERT INTO `sys_menu` VALUES ('2', '1', '系统菜单', 'base/menu/list.html', null, '1', 'fa fa-th-list', '1', '2017-08-09 22:55:15', '2017-08-17 10:00:12');
 INSERT INTO `sys_menu` VALUES ('3', '0', '组织机构', null, null, '0', 'fa fa-desktop', '1', '2017-08-09 23:06:55', '2017-08-17 09:54:28');
 INSERT INTO `sys_menu` VALUES ('4', '1', '通用字典', 'base/macro/list.html', null, '1', 'fa fa-book', '2', '2017-08-09 23:06:58', '2017-08-17 10:00:24');
@@ -82,16 +82,18 @@ INSERT INTO `sys_menu` VALUES ('48', '47', '刷新', '/quartz/job/list', 'quartz
 INSERT INTO `sys_menu` VALUES ('49', '47', '新增', '/quartz/job/save', 'quartz:job:save', '2', null, '0', '2017-08-19 23:01:29', '2017-09-05 13:08:30');
 INSERT INTO `sys_menu` VALUES ('50', '47', '编辑', '/quartz/job/update', 'quartz:job:edit', '2', null, '0', '2017-08-19 23:01:58', '2017-09-05 13:08:44');
 INSERT INTO `sys_menu` VALUES ('51', '47', '删除', '/quartz/job/remove', 'quartz:job:remove', '2', null, '0', '2017-08-19 23:02:30', '2017-09-05 13:08:57');
-INSERT INTO `sys_menu` VALUES ('52', '47', '启用', '/quartz/job/enable', 'quartz:job:enable', '2', null, '0', '2017-08-19 23:08:59', '2017-09-05 13:09:38');
-INSERT INTO `sys_menu` VALUES ('53', '47', '停用', '/quartz/job/disable', 'quartz:job:disable', '2', null, '0', '2017-08-19 23:09:31', '2017-09-05 13:09:52');
-INSERT INTO `sys_menu` VALUES ('54', '47', '立即执行', '/quartz/job/run', 'quartz:job:run', '2', null, '0', '2017-08-19 23:10:09', '2017-09-05 13:10:06');
-INSERT INTO `sys_menu` VALUES ('55', '47', '日志列表', null, 'quartz:job:log', '2', null, '0', '2017-08-19 23:10:40', null);
-INSERT INTO `sys_menu` VALUES ('56', '47', '刷新', '/quartz/job/log/list', 'quartz:log:list', '2', null, '0', '2017-08-21 13:25:33', '2017-09-05 13:10:32');
-INSERT INTO `sys_menu` VALUES ('57', '47', '删除', '/quartz/job/log/remove', 'quartz:log:remove', '2', null, '0', '2017-08-21 13:25:52', '2017-09-05 13:10:51');
-INSERT INTO `sys_menu` VALUES ('58', '47', '清空', '/quartz/job/log/clear', 'quartz:log:clear', '2', null, '0', '2017-08-21 13:26:11', '2017-09-05 13:11:04');
+INSERT INTO `sys_menu` VALUES ('52', '63', '启用', '/quartz/job/enable', 'quartz:job:enable', '2', null, '0', '2017-08-19 23:08:59', '2017-09-13 22:12:35');
+INSERT INTO `sys_menu` VALUES ('53', '63', '停用', '/quartz/job/disable', 'quartz:job:disable', '2', null, '0', '2017-08-19 23:09:31', '2017-09-13 22:12:53');
+INSERT INTO `sys_menu` VALUES ('54', '63', '立即执行', '/quartz/job/run', 'quartz:job:run', '2', null, '0', '2017-08-19 23:10:09', '2017-09-13 22:13:11');
+INSERT INTO `sys_menu` VALUES ('55', '47', '日志列表', null, 'quartz:job:log', '1', null, '0', '2017-08-19 23:10:40', '2017-09-13 22:21:12');
+INSERT INTO `sys_menu` VALUES ('56', '55', '刷新', '/quartz/job/log/list', 'quartz:log:list', '2', null, '0', '2017-08-21 13:25:33', '2017-09-13 22:21:27');
+INSERT INTO `sys_menu` VALUES ('57', '55', '删除', '/quartz/job/log/remove', 'quartz:log:remove', '2', null, '0', '2017-08-21 13:25:52', '2017-09-13 22:21:46');
+INSERT INTO `sys_menu` VALUES ('58', '55', '清空', '/quartz/job/log/clear', 'quartz:log:clear', '2', null, '0', '2017-08-21 13:26:11', '2017-09-13 22:22:04');
 INSERT INTO `sys_menu` VALUES ('59', '1', '敏捷开发', 'base/generator/list.html', null, '1', 'fa fa-archive', '5', '2017-09-05 10:49:04', null);
 INSERT INTO `sys_menu` VALUES ('60', '59', '刷新', '/sys/generator/list', 'sys:gen:list', '2', null, '0', '2017-09-05 10:49:25', '2017-09-05 13:07:33');
 INSERT INTO `sys_menu` VALUES ('61', '59', '生成代码', '/sys/generator/code', 'sys:gen:code', '2', null, '0', '2017-09-05 10:49:44', '2017-09-05 13:07:48');
+INSERT INTO `sys_menu` VALUES ('62', '1', '系统监控', 'druid/index.html', null, '1', 'fa fa-bug', '6', '2017-09-10 17:01:59', '2017-09-10 17:02:19');
+INSERT INTO `sys_menu` VALUES ('63', '47', '更多', null, 'quartz:job:more', '1', null, '0', '2017-09-13 22:11:51', '2017-09-13 22:12:12');
 
 -- ----------------------------
 -- Table structure for sys_org
@@ -147,7 +149,7 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '1', '超级管理员', 'admin', '【系统内置】', '2', '2017-08-12 00:43:52', '2017-08-12 19:14:59');
+INSERT INTO `sys_role` VALUES ('1', '1', '超级管理员', 'admin', '【系统内置】', '2', '2017-08-12 00:43:52', '2017-09-05 14:02:04');
 INSERT INTO `sys_role` VALUES ('39', '3', '测试用户', 'test', null, '1', '2017-08-17 19:41:15', '2017-08-17 19:42:39');
 
 -- ----------------------------
@@ -159,67 +161,69 @@ CREATE TABLE `sys_role_menu` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   `menu_id` bigint(20) DEFAULT NULL COMMENT '菜单ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1334 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=1560 DEFAULT CHARSET=utf8 COMMENT='角色与菜单对应关系';
 
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------
-INSERT INTO `sys_role_menu` VALUES ('1278', '1', '1');
-INSERT INTO `sys_role_menu` VALUES ('1279', '1', '37');
-INSERT INTO `sys_role_menu` VALUES ('1280', '1', '38');
-INSERT INTO `sys_role_menu` VALUES ('1281', '1', '39');
-INSERT INTO `sys_role_menu` VALUES ('1282', '1', '40');
-INSERT INTO `sys_role_menu` VALUES ('1283', '1', '41');
-INSERT INTO `sys_role_menu` VALUES ('1284', '1', '2');
-INSERT INTO `sys_role_menu` VALUES ('1285', '1', '20');
-INSERT INTO `sys_role_menu` VALUES ('1286', '1', '21');
-INSERT INTO `sys_role_menu` VALUES ('1287', '1', '22');
-INSERT INTO `sys_role_menu` VALUES ('1288', '1', '23');
-INSERT INTO `sys_role_menu` VALUES ('1289', '1', '4');
-INSERT INTO `sys_role_menu` VALUES ('1290', '1', '32');
-INSERT INTO `sys_role_menu` VALUES ('1291', '1', '33');
-INSERT INTO `sys_role_menu` VALUES ('1292', '1', '34');
-INSERT INTO `sys_role_menu` VALUES ('1293', '1', '35');
-INSERT INTO `sys_role_menu` VALUES ('1294', '1', '27');
-INSERT INTO `sys_role_menu` VALUES ('1295', '1', '28');
-INSERT INTO `sys_role_menu` VALUES ('1296', '1', '29');
-INSERT INTO `sys_role_menu` VALUES ('1297', '1', '30');
-INSERT INTO `sys_role_menu` VALUES ('1298', '1', '47');
-INSERT INTO `sys_role_menu` VALUES ('1299', '1', '48');
-INSERT INTO `sys_role_menu` VALUES ('1300', '1', '49');
-INSERT INTO `sys_role_menu` VALUES ('1301', '1', '50');
-INSERT INTO `sys_role_menu` VALUES ('1302', '1', '51');
-INSERT INTO `sys_role_menu` VALUES ('1303', '1', '52');
-INSERT INTO `sys_role_menu` VALUES ('1304', '1', '53');
-INSERT INTO `sys_role_menu` VALUES ('1305', '1', '54');
-INSERT INTO `sys_role_menu` VALUES ('1306', '1', '55');
-INSERT INTO `sys_role_menu` VALUES ('1307', '1', '56');
-INSERT INTO `sys_role_menu` VALUES ('1308', '1', '57');
-INSERT INTO `sys_role_menu` VALUES ('1309', '1', '58');
-INSERT INTO `sys_role_menu` VALUES ('1310', '1', '59');
-INSERT INTO `sys_role_menu` VALUES ('1311', '1', '60');
-INSERT INTO `sys_role_menu` VALUES ('1312', '1', '61');
-INSERT INTO `sys_role_menu` VALUES ('1313', '1', '3');
-INSERT INTO `sys_role_menu` VALUES ('1314', '1', '36');
-INSERT INTO `sys_role_menu` VALUES ('1315', '1', '42');
-INSERT INTO `sys_role_menu` VALUES ('1316', '1', '43');
-INSERT INTO `sys_role_menu` VALUES ('1317', '1', '44');
-INSERT INTO `sys_role_menu` VALUES ('1318', '1', '45');
-INSERT INTO `sys_role_menu` VALUES ('1319', '1', '7');
-INSERT INTO `sys_role_menu` VALUES ('1320', '1', '15');
-INSERT INTO `sys_role_menu` VALUES ('1321', '1', '16');
-INSERT INTO `sys_role_menu` VALUES ('1322', '1', '17');
-INSERT INTO `sys_role_menu` VALUES ('1323', '1', '18');
-INSERT INTO `sys_role_menu` VALUES ('1324', '1', '19');
-INSERT INTO `sys_role_menu` VALUES ('1325', '1', '46');
-INSERT INTO `sys_role_menu` VALUES ('1326', '1', '6');
-INSERT INTO `sys_role_menu` VALUES ('1327', '1', '11');
-INSERT INTO `sys_role_menu` VALUES ('1328', '1', '12');
-INSERT INTO `sys_role_menu` VALUES ('1329', '1', '13');
-INSERT INTO `sys_role_menu` VALUES ('1330', '1', '14');
-INSERT INTO `sys_role_menu` VALUES ('1331', '1', '24');
-INSERT INTO `sys_role_menu` VALUES ('1332', '1', '25');
-INSERT INTO `sys_role_menu` VALUES ('1333', '1', '26');
+INSERT INTO `sys_role_menu` VALUES ('1502', '1', '1');
+INSERT INTO `sys_role_menu` VALUES ('1503', '1', '37');
+INSERT INTO `sys_role_menu` VALUES ('1504', '1', '38');
+INSERT INTO `sys_role_menu` VALUES ('1505', '1', '39');
+INSERT INTO `sys_role_menu` VALUES ('1506', '1', '40');
+INSERT INTO `sys_role_menu` VALUES ('1507', '1', '41');
+INSERT INTO `sys_role_menu` VALUES ('1508', '1', '2');
+INSERT INTO `sys_role_menu` VALUES ('1509', '1', '20');
+INSERT INTO `sys_role_menu` VALUES ('1510', '1', '21');
+INSERT INTO `sys_role_menu` VALUES ('1511', '1', '22');
+INSERT INTO `sys_role_menu` VALUES ('1512', '1', '23');
+INSERT INTO `sys_role_menu` VALUES ('1513', '1', '4');
+INSERT INTO `sys_role_menu` VALUES ('1514', '1', '32');
+INSERT INTO `sys_role_menu` VALUES ('1515', '1', '33');
+INSERT INTO `sys_role_menu` VALUES ('1516', '1', '34');
+INSERT INTO `sys_role_menu` VALUES ('1517', '1', '35');
+INSERT INTO `sys_role_menu` VALUES ('1518', '1', '27');
+INSERT INTO `sys_role_menu` VALUES ('1519', '1', '28');
+INSERT INTO `sys_role_menu` VALUES ('1520', '1', '29');
+INSERT INTO `sys_role_menu` VALUES ('1521', '1', '30');
+INSERT INTO `sys_role_menu` VALUES ('1522', '1', '47');
+INSERT INTO `sys_role_menu` VALUES ('1523', '1', '48');
+INSERT INTO `sys_role_menu` VALUES ('1524', '1', '49');
+INSERT INTO `sys_role_menu` VALUES ('1525', '1', '50');
+INSERT INTO `sys_role_menu` VALUES ('1526', '1', '51');
+INSERT INTO `sys_role_menu` VALUES ('1527', '1', '55');
+INSERT INTO `sys_role_menu` VALUES ('1528', '1', '56');
+INSERT INTO `sys_role_menu` VALUES ('1529', '1', '57');
+INSERT INTO `sys_role_menu` VALUES ('1530', '1', '58');
+INSERT INTO `sys_role_menu` VALUES ('1531', '1', '63');
+INSERT INTO `sys_role_menu` VALUES ('1532', '1', '52');
+INSERT INTO `sys_role_menu` VALUES ('1533', '1', '53');
+INSERT INTO `sys_role_menu` VALUES ('1534', '1', '54');
+INSERT INTO `sys_role_menu` VALUES ('1535', '1', '59');
+INSERT INTO `sys_role_menu` VALUES ('1536', '1', '60');
+INSERT INTO `sys_role_menu` VALUES ('1537', '1', '61');
+INSERT INTO `sys_role_menu` VALUES ('1538', '1', '62');
+INSERT INTO `sys_role_menu` VALUES ('1539', '1', '3');
+INSERT INTO `sys_role_menu` VALUES ('1540', '1', '36');
+INSERT INTO `sys_role_menu` VALUES ('1541', '1', '42');
+INSERT INTO `sys_role_menu` VALUES ('1542', '1', '43');
+INSERT INTO `sys_role_menu` VALUES ('1543', '1', '44');
+INSERT INTO `sys_role_menu` VALUES ('1544', '1', '45');
+INSERT INTO `sys_role_menu` VALUES ('1545', '1', '7');
+INSERT INTO `sys_role_menu` VALUES ('1546', '1', '15');
+INSERT INTO `sys_role_menu` VALUES ('1547', '1', '16');
+INSERT INTO `sys_role_menu` VALUES ('1548', '1', '17');
+INSERT INTO `sys_role_menu` VALUES ('1549', '1', '18');
+INSERT INTO `sys_role_menu` VALUES ('1550', '1', '19');
+INSERT INTO `sys_role_menu` VALUES ('1551', '1', '46');
+INSERT INTO `sys_role_menu` VALUES ('1552', '1', '6');
+INSERT INTO `sys_role_menu` VALUES ('1553', '1', '11');
+INSERT INTO `sys_role_menu` VALUES ('1554', '1', '12');
+INSERT INTO `sys_role_menu` VALUES ('1555', '1', '13');
+INSERT INTO `sys_role_menu` VALUES ('1556', '1', '14');
+INSERT INTO `sys_role_menu` VALUES ('1557', '1', '24');
+INSERT INTO `sys_role_menu` VALUES ('1558', '1', '25');
+INSERT INTO `sys_role_menu` VALUES ('1559', '1', '26');
 
 -- ----------------------------
 -- Table structure for sys_role_org
@@ -230,7 +234,7 @@ CREATE TABLE `sys_role_org` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   `org_id` bigint(20) DEFAULT NULL COMMENT '机构ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='角色与机构对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='角色与机构对应关系';
 
 -- ----------------------------
 -- Records of sys_role_org
@@ -255,7 +259,7 @@ CREATE TABLE `sys_user` (
   `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='系统用户';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='系统用户';
 
 -- ----------------------------
 -- Records of sys_user
@@ -271,7 +275,7 @@ CREATE TABLE `sys_user_role` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户ID',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
 -- ----------------------------
 -- Records of sys_user_role
