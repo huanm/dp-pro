@@ -21,8 +21,8 @@
 		            <a v-if="hasPermission('quartz:job:list')" class="btn btn-default" onclick="reload();"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
 		            <a v-if="hasPermission('quartz:job:save')" class="btn btn-default" @click="save"><i class="fa fa-plus"></i>&nbsp;新增</a>
 		            <a v-if="hasPermission('quartz:job:edit')" class="btn btn-default" @click="edit"><i class="fa fa-pencil-square-o"></i>&nbsp;编辑</a>
-		            <a v-if="hasPermission('quartz:job:more')" v-if="hasPermission('quartz:job:remove')" class="btn btn-default" @click="remove"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
-					<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">更多&nbsp;<span class="caret"></span></a>
+		            <a v-if="hasPermission('quartz:job:remove')" class="btn btn-default" @click="remove"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+					<a v-if="hasPermission('quartz:job:more')" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">更多&nbsp;<span class="caret"></span></a>
 					<ul class="dropdown-menu pull-right">
 						<li><a v-if="hasPermission('quartz:job:enable')" @click="enable">&nbsp;启用</a></li>
 						<li><a v-if="hasPermission('quartz:job:disable')" @click="disable">&nbsp;禁用</a></li>
