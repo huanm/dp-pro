@@ -25,11 +25,11 @@ $.ajaxSetup({
 			  btn: ['立即退出'],
 			  btnAlign: 'c',
 			  yes: function(){
-				  toUrl('/sys/logout');
+				  toUrl('sys/logout');
 			  }
 			});
 			setTimeout(function(){
-				toUrl("/sys/logout");
+				toUrl("sys/logout");
 			}, 2000);
         } else if(textStatus=="error"){
            dialogMsg("请求超时，请稍候重试...", "error");
