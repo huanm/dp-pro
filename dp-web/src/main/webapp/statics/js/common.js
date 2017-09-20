@@ -14,31 +14,26 @@ $.ajaxSetup({
 	cache: false,
 	complete:function(XMLHttpRequest,textStatus){
 		if(textStatus=="parsererror"){
-           console.log("登陆超时！请重新登陆！");
-       } else if(textStatus=="error"){
-           console.log("请求超时！请稍后再试！");
-       }
-//		console.log(XMLHttpRequest);
-//		var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus");    
-//		if(sessionstatus=="timeout"){
-//			top.layer.open({
-//			  title: '系统提示',
-//			  area: '338px',
-//			  icon: 3,
-//			  move: false,
-//			  anim: -1,
-//			  isOutAnim: false,
-//			  content: '注：登录超时,请稍后重新登录.',
-//			  btn: ['立即退出'],
-//			  btnAlign: 'c',
-//			  yes: function(){
-//				  toUrl('/user/logout');
-//			  }
-//			});
-//			setTimeout(function(){
-//				toUrl("/user/timeout");
-//			}, 2000);
-//		}     
+            top.layer.open({
+			  title: '系统提示',
+			  area: '338px',
+			  icon: 3,
+			  move: false,
+			  anim: -1,
+			  isOutAnim: false,
+			  content: '注：登录超时,请稍后重新登录.',
+			  btn: ['立即退出'],
+			  btnAlign: 'c',
+			  yes: function(){
+				  toUrl('/sys/logout');
+			  }
+			});
+			setTimeout(function(){
+				toUrl("/sys/logout");
+			}, 2000);
+        } else if(textStatus=="error"){
+           dialogMsg("请求超时，请稍候重试...", "error");
+        }
 	}
 })
 

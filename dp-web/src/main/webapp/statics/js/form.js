@@ -30,7 +30,29 @@
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				dialogLoading(false);
-				dialogMsg(errorThrown, 'error');
+                if(textStatus=="parsererror"){
+                    top.layer.open({
+                        title: '系统提示',
+                        area: '338px',
+                        icon: 3,
+                        move: false,
+                        anim: -1,
+                        isOutAnim: false,
+                        content: '注：登录超时,请稍后重新登录.',
+                        btn: ['立即退出'],
+                        btnAlign: 'c',
+                        yes: function(){
+                            toUrl('/sys/logout');
+                        }
+                    });
+                    setTimeout(function(){
+                        toUrl("/sys/logout");
+                    }, 2000);
+                } else if(textStatus=="error"){
+                    dialogMsg("请求超时，请稍候重试...", "error");
+                } else {
+                    dialogMsg(errorThrown, 'error');
+				}
 			},
 			beforeSend : function() {
 				dialogLoading(true);
@@ -72,9 +94,31 @@ $.RemoveForm = function(options) {
 					}
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {
-					dialogLoading(false);
-					dialogMsg(errorThrown, 'error');
-				},
+                    dialogLoading(false);
+                    if(textStatus=="parsererror"){
+                        top.layer.open({
+                            title: '系统提示',
+                            area: '338px',
+                            icon: 3,
+                            move: false,
+                            anim: -1,
+                            isOutAnim: false,
+                            content: '注：登录超时,请稍后重新登录.',
+                            btn: ['立即退出'],
+                            btnAlign: 'c',
+                            yes: function(){
+                                toUrl('/sys/logout');
+                            }
+                        });
+                        setTimeout(function(){
+                            toUrl("/sys/logout");
+                        }, 2000);
+                    } else if(textStatus=="error"){
+                        dialogMsg("请求超时，请稍候重试...", "error");
+                    } else {
+                        dialogMsg(errorThrown, 'error');
+                    }
+                },
 				beforeSend : function() {
 					dialogLoading(true);
 				},
@@ -110,7 +154,30 @@ $.SetForm = function(options) {
 			}
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			dialogMsg(errorThrown, 'error');
+            dialogLoading(false);
+            if(textStatus=="parsererror"){
+                top.layer.open({
+                    title: '系统提示',
+                    area: '338px',
+                    icon: 3,
+                    move: false,
+                    anim: -1,
+                    isOutAnim: false,
+                    content: '注：登录超时,请稍后重新登录.',
+                    btn: ['立即退出'],
+                    btnAlign: 'c',
+                    yes: function(){
+                        toUrl('/sys/logout');
+                    }
+                });
+                setTimeout(function(){
+                    toUrl("/sys/logout");
+                }, 2000);
+            } else if(textStatus=="error"){
+                dialogMsg("请求超时，请稍候重试...", "error");
+            } else {
+                dialogMsg(errorThrown, 'error');
+            }
 		},
 		beforeSend : function() {
 			dialogLoading(true);
@@ -169,8 +236,30 @@ $.ConfirmAjax = function(options) {
 					}
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {
-					dialogLoading(false);
-					dialogMsg(errorThrown, 'error');
+                    dialogLoading(false);
+                    if(textStatus=="parsererror"){
+                        top.layer.open({
+                            title: '系统提示',
+                            area: '338px',
+                            icon: 3,
+                            move: false,
+                            anim: -1,
+                            isOutAnim: false,
+                            content: '注：登录超时,请稍后重新登录.',
+                            btn: ['立即退出'],
+                            btnAlign: 'c',
+                            yes: function(){
+                                toUrl('/sys/logout');
+                            }
+                        });
+                        setTimeout(function(){
+                            toUrl("/sys/logout");
+                        }, 2000);
+                    } else if(textStatus=="error"){
+                        dialogMsg("请求超时，请稍候重试...", "error");
+                    } else {
+                        dialogMsg(errorThrown, 'error');
+                    }
 				},
 				beforeSend : function() {
 					dialogLoading(true);
