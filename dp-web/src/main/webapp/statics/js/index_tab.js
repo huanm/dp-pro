@@ -245,9 +245,6 @@
             $('.tabLeft').on('click', $.dptab.scrollTabLeft);
             $('.tabRight').on('click', $.dptab.scrollTabRight);
             $('.tabReload').on('click', $.dptab.refreshTab);
-            $('.tabCloseCurrent').on('click', function () {
-                $('.page-tabs-content').find('.active i').trigger("click");
-            });
             $('.tabCloseAll').on('click', function () {
                 $('.page-tabs-content').children("[data-id]").find('.fa-remove').each(function () {
                     $('.DP_iframe[data-id="' + $(this).data('id') + '"]').remove();
@@ -376,6 +373,9 @@ var vm = new Vue({
                 $('#fullscreen').removeAttr('fullscreen')
                 $.dptab.exitFullscreen();
             }
+		},
+		tabCloseCurrent : function() {
+			$('.page-tabs-content').find('.active i').trigger("click");
 		},
 		getMenuList : function(event) {
 			$.getJSON("sys/menu/user?_" + $.now(), function(r) {
