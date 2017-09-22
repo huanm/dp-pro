@@ -26,7 +26,7 @@
             var target = $('.DP_iframe[data-id="' + currentId + '"]');
             var url = target.attr('src');
             target.attr('src', url).load(function () {
-                
+
             });
         },
         activeTab: function () {
@@ -138,9 +138,9 @@
                 var str1 = '<iframe class="DP_iframe" id="iframe' + dataId + '" name="iframe' + dataId + '"  width="100%" height="100%" src="' + dataUrl + '" frameborder="0" data-id="' + dataUrl + '" seamless></iframe>';
                 $('.mainContent').find('iframe.DP_iframe').hide();
                 $('.mainContent').append(str1);
-                
+
                 $('.mainContent iframe:visible').load(function () {
-                    
+
                 });
                 $('.menuTabs .page-tabs-content').append(str);
                 $.dptab.scrollToTab($('.menuTab.active'));
@@ -202,7 +202,8 @@
             }, "fast");
         },
         scrollToTab: function (element) {
-            var marginLeftVal = $.dptab.calSumWidth($(element).prevAll()), marginRightVal = $.dptab.calSumWidth($(element).nextAll());
+            var marginLeftVal = $.dptab.calSumWidth($(element).prevAll()),
+                marginRightVal = $.dptab.calSumWidth($(element).nextAll());
             var tabOuterWidth = $.dptab.calSumWidth($(".content-tabs").children().not(".menuTabs"));
             var visibleWidth = $(".content-tabs").outerWidth(true) - tabOuterWidth;
             var scrollVal = 0;
@@ -231,10 +232,10 @@
             });
             return width;
         },
-        calSumHeight: function(element) {
+        calSumHeight: function (element) {
             var height = 0;
-            $(element).each(function() {
-            	height += $(this).outerHeight(true)
+            $(element).each(function () {
+                height += $(this).outerHeight(true)
             });
             return height;
         },
@@ -263,18 +264,18 @@
                     e.slideUp(500, function () {
                         e.removeClass("menu-open")
                     }),
-                    e.parent("li").removeClass("active")
+                        e.parent("li").removeClass("active")
                 } else if (e.is(".treeview-menu") && !e.is(":visible")) {
                     var f = d.parents("ul").first(),
-                    g = f.find("ul:visible").slideUp('fast');
+                        g = f.find("ul:visible").slideUp('fast');
                     g.removeClass("menu-open");
                     var h = d.parent("li");
                     var _height3 = $.dptab.calSumHeight($("#sidebar-menu>li"));
                     e.slideDown('fast', function () {
                         e.addClass("menu-open"),
-                        f.find("li.active").removeClass("active"),
-                        h.addClass("active");
-                        
+                            f.find("li.active").removeClass("active"),
+                            h.addClass("active");
+
                     })
                 }
                 e.is(".treeview-menu");
@@ -302,173 +303,189 @@
             return reval;
         },
         loadMenu: function (data) {
-        	var _html = "<li class='header'>导航菜单</li>";
+            var _html = "<li class='header'>导航菜单</li>";
             $.each(data, function (i) {
                 var row = data[i];
-                if (row.parentId == 0) {
-                    if (i == 0) {
-                        _html += '<li class="treeview active">';
-                    } else {
-                        _html += '<li class="treeview">';
-                    }
-                    _html += '<a href="#">'
-                    _html += '<i class="' + row.icon + '"></i><span>' + row.name + '</span><i class="fa fa-angle-left pull-right"></i>'
-                    _html += '</a>'
-                    var childNodes = row.list;
-                    if (childNodes.length > 0) {
-                        _html += '<ul class="treeview-menu">';
-                        $.each(childNodes, function (i) {
-                            var subrow = childNodes[i];
-                            var subchildNodes = $.dpindex.jsonWhere(data, function (v) { return v.parentId == subrow.menuId });
-                            _html += '<li>';
-                            if (subchildNodes.length > 0) {
-                                _html += '<a href="#"><i class="' + subrow.icon + '"></i>' + subrow.name + '';
-                                _html += '<i class="fa fa-angle-left pull-right"></i></a>';
-                                _html += '<ul class="treeview-menu">';
-                                $.each(subchildNodes, function (i) {
-                                    var subchildNodesrow = subchildNodes[i];
-                                    _html += '<li><a class="menuItem" data-id="' + subrow.menuId + '" href="' + subrow.url + '"><i class="' + subchildNodesrow.icon + '"></i>' + subchildNodesrow.name + '</a></li>';
-                                });
-                                _html += '</ul>';
-
-                            } else {
-                                _html += '<a class="menuItem" data-id="' + subrow.menuId + '" href="' + subrow.url + '"><i class="' + subrow.icon + '"></i>' + subrow.name + '</a>';
-                            }
-                            _html += '</li>';
-                        });
-                        _html += '</ul>';
-                    }
-                    _html += '</li>'
+                if (i == 0) {
+                    _html += '<li class="active">';
+                } else {
+                    _html += '<li>';
                 }
+                if(row.type == 0) {
+                    _html += "<a href='javascript:;'>";
+                    if (row.icon != null) {
+                        _html += "<i class='" + row.icon + "'></i>" +
+		                            "<span>" + row.name + "</span>" +
+		                            "<i class='fa fa-angle-left pull-right'></i>" +
+                             "</a>";
+                    }
+                    _html += "<ul class='treeview-menu'>"
+                    _html += $.dpindex.getChild(row.list);
+                    _html += "</ul>";
+                }
+                if(row.type == 1) {
+                    if(row.icon == null){
+                        row.icon = "fa fa-circle-o";
+                    }
+                    _html += "<a href='" + row.url + "' data-id='" + row.id + "' class='menuItem'><i class='" + row.icon + "'></i> " + row.name + "</a>";
+                }
+                _html += "</li>";
             });
             $("#sidebar-menu").empty().append(_html);
+        },
+        getChild: function(data) {
+            var _html = "";
+            $.each(data, function (i) {
+                var row = data[i];
+                _html += "<li>";
+                if(row.type == 0) {
+                    _html += "<a href='javascript:;'>";
+                    if (row.icon != null) {
+                        _html += "<i class='" + row.icon + "'></i>" +
+	                             "<span>" + row.name + "</span>" +
+	                             "<i class='fa fa-angle-left pull-right'></i>" +
+                             "</a>";
+                    }
+                    _html += "<ul class='treeview-menu'>"
+                    _html += $.dpindex.getChild(row.list);
+                    _html += "</ul>";
+                }
+                if(row.type == 1) {
+                    if(row.icon == null){
+                        row.icon = "fa fa-circle-o";
+                    }
+                    _html += "<a href='" + row.url + "' data-id='" + row.id + "' class='menuItem'><i class='" + row.icon + "'></i> " + row.name + "</a>";
+                }
+                _html += "</li>";
+            });
+            return _html;
         }
     };
 })(jQuery);
 
 var vm = new Vue({
-	el : '#dpLTE',
-	data : {
-		user : {},
-		menuList : {},
-		main : "system/index/main.html",
-		pswd : null,
-		newPswd : null
-	},
-	methods : {
-		hideMenu : function() {
-			if (!$("body").hasClass("sidebar-collapse")) {
-				$("body").addClass("sidebar-collapse");
-				removeScroll();
-			} else {
-				$("body").removeClass("sidebar-collapse");
-				setScroll();
-			}
-		},
-		fullScreen : function() {
-			if (!$('#fullscreen').attr('fullscreen')) {
+    el: '#dpLTE',
+    data: {
+        user: {},
+        menuList: {},
+        main: "system/index/main.html",
+        pswd: null,
+        newPswd: null
+    },
+    methods: {
+        hideMenu: function () {
+            if (!$("body").hasClass("sidebar-collapse")) {
+                $("body").addClass("sidebar-collapse");
+                removeScroll();
+            } else {
+                $("body").removeClass("sidebar-collapse");
+                setScroll();
+            }
+        },
+        fullScreen: function () {
+            if (!$('#fullscreen').attr('fullscreen')) {
                 $('#fullscreen').attr('fullscreen', 'true');
                 $.dptab.requestFullScreen();
             } else {
                 $('#fullscreen').removeAttr('fullscreen')
                 $.dptab.exitFullscreen();
             }
-		},
-		tabCloseCurrent : function() {
-			$('.page-tabs-content').find('.active i').trigger("click");
-		},
-		getMenuList : function(event) {
-			$.getJSON("sys/menu/user?_" + $.now(), function(r) {
-				vm.menuList = r.menuList;
-			});
-		},
-		getPermList : function(event) {
-			$.getJSON("sys/user/perms?_" + $.now(), function(r) {
-				window.perms = r.rows;
-			});
-		},
-		getUser : function() {
-			$.getJSON("sys/user/info?_" + $.now(), function(r) {
-				vm.user = r.user;
-			});
-		},
-		updatePassword : function() {
-			dialogContent({
-				title : "修改密码",
-				width : '420px',
-				height : '250px',
-				content : $("#passwordLayer"),
-				btn : [ '确定', '取消' ],
-				yes : function(index) {
-					if(isNullOrEmpty(vm.pswd)) {
-						dialogMsg('原密码为空！');
-						return false;
-					}
-					if(isNullOrEmpty(vm.newPswd)) {
-						dialogMsg('新密码为空！');
-						return false;
-					}
-					var data = "pswd=" + vm.pswd + "&newPswd="
-							+ vm.newPswd;
-					$.ajax({
-						type : "POST",
-						url : "sys/user/updatePswd?_" + $.now(),
-						data : data,
-						dataType : "json",
-						success : function(result) {
-							if (result.code == 0) {
-								layer.close(index);
-								dialogMsg(result.msg, 'success');
-								location.reload();
-							} else {
-								dialogAlert(result.msg, 'error');
-							}
-						}
-					});
-				}
-			});
-		},
-		logout : function() {
-			layer.open({
-				title : '系统提示',
-				area : '338px',
-				icon : 3,
-				anim : -1,
-				isOutAnim : false,
-				move : false,
-				content : '注：您确定要安全退出本次登录吗？',
-				btn : [ '确定', '取消' ],
-				btnAlign : 'c',
-				yes : function() {
-					dialogLoading(true);
-					setTimeout(function() {
-						toUrl('sys/logout?_' + $.now());
-					}, 500);
-				}
-			});
-		}
-	},
-	created : function() {
-		this.getMenuList();
-		this.getPermList();
-		this.getUser();
-	},
-	updated : function() {
-		$.dpindex.load();
-		$.dpindex.loadMenu(this.menuList);
-		$.dptab.init();
-		setScroll();
-	}
+        },
+        tabCloseCurrent: function() {
+            $('.page-tabs-content').find('.active i').trigger("click");
+        },
+        getMenuList: function (event) {
+            $.getJSON("sys/menu/user?_" + $.now(), function (r) {
+                vm.menuList = r.menuList;
+            });
+        },
+        getPermList: function (event) {
+            $.getJSON("sys/user/perms?_" + $.now(), function (r) {
+                window.perms = r.rows;
+            });
+        },
+        getUser: function () {
+            $.getJSON("sys/user/info?_" + $.now(), function (r) {
+                vm.user = r.user;
+            });
+        },
+        updatePassword: function () {
+            dialogContent({
+                title: "修改密码",
+                width: '420px',
+                height: '250px',
+                content: $("#passwordLayer"),
+                btn: ['确定', '取消'],
+                yes: function (index) {
+                    if (isNullOrEmpty(vm.pswd)) {
+                        dialogMsg('原密码为空！');
+                        return false;
+                    }
+                    if (isNullOrEmpty(vm.newPswd)) {
+                        dialogMsg('新密码为空！');
+                        return false;
+                    }
+                    var data = "pswd=" + vm.pswd + "&newPswd="
+                        + vm.newPswd;
+                    $.ajax({
+                        type: "POST",
+                        url: "sys/user/updatePswd?_" + $.now(),
+                        data: data,
+                        dataType: "json",
+                        success: function (result) {
+                            if (result.code == 0) {
+                                layer.close(index);
+                                dialogMsg(result.msg, 'success');
+                                location.reload();
+                            } else {
+                                dialogAlert(result.msg, 'error');
+                            }
+                        }
+                    });
+                }
+            });
+        },
+        logout: function () {
+            layer.open({
+                title: '系统提示',
+                area: '338px',
+                icon: 3,
+                anim: -1,
+                isOutAnim: false,
+                move: false,
+                content: '注：您确定要安全退出本次登录吗？',
+                btn: ['确定', '取消'],
+                btnAlign: 'c',
+                yes: function () {
+                    dialogLoading(true);
+                    setTimeout(function () {
+                        toUrl('sys/logout?_' + $.now());
+                    }, 500);
+                }
+            });
+        }
+    },
+    created: function () {
+        this.getMenuList();
+        this.getPermList();
+        this.getUser();
+    },
+    updated: function () {
+        $.dpindex.load();
+        $.dpindex.loadMenu(this.menuList);
+        $.dptab.init();
+        setScroll();
+    }
 });
 
 //菜单滚动条自适应
-function setScroll(){
+function setScroll() {
     $("#sidebar-menu").slimScroll({
         height: $(this).height() - 50,
         alwaysVisible: false,
     });
-    $(window).on("resize", function() {
-    	$("#sidebar-menu").slimScroll({
+    $(window).on("resize", function () {
+        $("#sidebar-menu").slimScroll({
             height: $(this).height() - 50,
             alwaysVisible: false,
         });
@@ -476,7 +493,7 @@ function setScroll(){
 }
 
 function removeScroll() {
-	$('.sidebar').append($('#sidebar-menu'));
-	$('#sidebar-menu').removeAttr('style');
-	$('.slimScrollDiv').remove();
+    $('.sidebar').append($('#sidebar-menu'));
+    $('#sidebar-menu').removeAttr('style');
+    $('.slimScrollDiv').remove();
 }
